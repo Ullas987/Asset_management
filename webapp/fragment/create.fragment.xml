@@ -1,0 +1,243 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f='sap.ui.layout.form'
+>
+    <Dialog
+        id="popup"
+        title="Asset"
+        afterClose="onPopupCancel"
+        resizable="true"
+        contentHeight="500px"
+        contentWidth="400px"
+    >
+        <content>
+            <f:SimpleForm
+                id="SimpleFormChange354"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                singleContainerFullSize="false"
+                columnsL="2"
+                columnsM="2"
+            >
+                <f:content>
+                    <Label
+                        text="Asset Name"
+                        labelFor="AssetName"
+                    />
+                    <Input
+                        id="AssetName"
+                        value="{local>/AssetData/ASSET_NAME}"
+                        required="true"
+                    />
+
+                    <Label
+                        text="Serial Number"
+                        labelFor="SerialNumber"
+                    />
+                    <Input
+                        id="SerialNumber"
+                        value="{local>/AssetData/SERIAL_NUMBER}"
+                        required="true"
+                    />
+
+                    <Label
+                        text="Short Description"
+                        labelFor="ShortDescription"
+                    />
+                    <Input
+                        id="ShortDescription"
+                        value="{local>/AssetData/SHORT_DESCRIPTION}"
+                    />
+
+                    <Label
+                        text="Asset Type"
+                        labelFor="AssetType"
+                    />
+                    <ComboBox
+                        id="AssetType"
+                        selectedKey="{local>/AssetData/ASSET_TYPE}"
+                        required="true"
+                    >
+                        <items>
+                            <core:Item
+                                key="Mouse"
+                                text="Mouse"
+                            />
+                            <core:Item
+                                key="Monitor"
+                                text="Monitor"
+                            />
+                            <core:Item
+                                key="Laptop"
+                                text="Laptop"
+                            />
+                            <core:Item
+                                key="Keyboard"
+                                text="Keyboard"
+                            />
+                            <core:Item
+                                key="Headphone"
+                                text="Headphone"
+                            />
+                            <core:Item
+                                key="Webcam"
+                                text="Webcam"
+                            />
+                        </items>
+                    </ComboBox>
+
+                    <Label
+                        text="Asset Status"
+                        labelFor="AssetStatus"
+                        required="true"
+                    />
+                    <Select
+                        id="AssetStatus"
+                        selectedKey="{local>/AssetData/ASSET_STATUS}"
+                        forceSelection="false"
+                    >
+                        <core:Item
+                            key="Active"
+                            text="Active"
+                        />
+                        <core:Item
+                            key="Inactive"
+                            text="Inactive"
+                        />
+                        <core:Item
+                            key="Deleted"
+                            text="Deleted"
+                        />
+                    </Select>
+
+                    <Label
+                        text="Asset Location"
+                        labelFor="AssetLocation"
+                        required="true"
+                    />
+                    <Select
+                        id="AssetLocation"
+                        selectedKey="{local>/AssetData/ASSET_LOCATION}"
+                        forceSelection="false"
+                    >
+                        <core:Item
+                            key="STX India"
+                            text="STX India"
+                        />
+                        <core:Item
+                            key="STX Germany"
+                            text="STX Germany"
+                        />
+                    </Select>
+
+                    <Label
+                        text="Asset Sublocation"
+                        labelFor="AssetSubLocation"
+                    />
+                    <Select
+                        id="AssetSubLocation"
+                        selectedKey="{local>/AssetData/ASSET_SUBLOCATION}"
+                        forceSelection="false"
+                    >
+                        <core:Item
+                            key="Home"
+                            text="Home"
+                        />
+                        <core:Item
+                            key="Office"
+                            text="Office"
+                        />
+                    </Select>
+
+                    <Label
+                        text="Model Number"
+                        labelFor="ModelNumber"
+                    />
+                    <Input
+                        id="ModelNumber"
+                        value="{local>/AssetData/MODEL}"
+                    />
+
+                    <Label
+                        text="Manufacturer"
+                        labelFor="Manufacturer"
+                    />
+                    <Input
+                        id="Manufacturer"
+                        value="{local>/AssetData/MANUFACTURER}"
+                    />
+
+                    <Label
+                        text="Year of Manufacture"
+                        labelFor="YearOfManufacture"
+                    />
+                    <DatePicker
+                       id="idManufactureYear"
+                        displayFormat="yyyy"
+                        valueFormat="yyyy"
+                        placeholder="Select Year"
+                        value="{local>/AssetData/YEAR_OF_MANUFACTURE}"
+                      
+                    />
+    
+                    <Label
+                        text="Product Color"
+                        labelFor="ProductColor"
+                    />
+                    <Input
+                        id="ProductColor"
+                        value="{local>/AssetData/PRODUCT_COLOR}"
+                    />
+
+                    <Label
+                        text="Memory"
+                        labelFor="Memory"
+                    />
+                    <Input
+                        id="Memory"
+                        value="{local>/AssetData/MEMORY}"
+                    />
+
+                    <Label
+                        text="Storage"
+                        labelFor="Storage"
+                    />
+                    <Input
+                        id="Storage"
+                        value="{local>/AssetData/STORAGE}"
+                    />
+
+                    <Label
+                        text="Processor"
+                        labelFor="Processor"
+                    />
+                    <Input
+                        id="Processor"
+                        value="{local>/AssetData/PROCESSOR}"
+                    />
+
+                    <Label
+                        text="Resolution"
+                        labelFor="Resolution"
+                    />
+                    <Input
+                        id="Resolution"
+                        value="{local>/AssetData/RESOLUTION}"
+                    />
+                    <!-- </VBox> -->
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <buttons>
+            <Button
+                text="Save"
+                press="onPopupConfirm"
+            />
+            <Button
+                text="Cancel"
+                press="onPopupCancel"
+            />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

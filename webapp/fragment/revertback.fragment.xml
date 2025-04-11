@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idRevertBackDialog"
+        title="Revoke the Item"
+        draggable="true"
+        resizable="true"
+    >
+        <f:SimpleForm id="idFormAsssign3">
+            <Text text="Are you sure to take back asset" />
+        </f:SimpleForm>
+        <beginButton>
+            <Button
+                id="idRevertBtn"
+                text="Revoke"
+                press="onRevertPress"
+                type="Default"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="idCancelBtn2"
+                text="Cancel"
+                press="onRevertCancel"
+                type="Reject"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

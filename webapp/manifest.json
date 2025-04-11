@@ -1,0 +1,156 @@
+{
+    "_version": "1.17.0",
+    "sap.app": {
+        "id": "stx.zam24",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.16.5",
+            "toolsId": "7212a30a-8e73-4813-b35a-847642675be8"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZAM24_ODATA_SERVICE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "handleValidation": true,
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.71.55",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "stx.zam24.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "stx.zam24.view",
+                "controlAggregation": "pages",
+                "controlId": "appContainer",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "AssetRoute",
+                    "target": [
+                        "asset"
+                    ]
+                },
+                {
+                    "pattern": "AvailableAssets",
+                    "name": "AvailAssignRoute",
+                    "target": [
+                        "availAssignPage"
+                    ]
+                },
+                {
+                    "pattern": "AssignedAssets",
+                    "name": "UnAvailAssignRoute",
+                    "target": [
+                        "unAvailAssetsPage"
+                    ]
+                },
+                {
+                    "pattern": "Image",
+                    "name": "NextPage",
+                    "target": [
+                        "asset",
+                        "Image"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetApp": {
+                    "viewType": "XML",
+                    "ControlAggregation": "pages",
+                    "viewName": "App",
+                    "viewId": "idApp"
+                },
+                "asset": {
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "viewName": "Asset"
+                },
+                "Image": {
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "viewName": "NewPage"
+                },
+                "availAssignPage": {
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "viewName": "AvailAsset"
+                },
+                "unAvailAssetsPage": {
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "viewName": "AssignedAsset"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "stx.zam24.view.App",
+            "type": "XML",
+            "id": "App"
+        }
+    }
+}

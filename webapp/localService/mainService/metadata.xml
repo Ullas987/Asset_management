@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZAM24_ODATA_SERVICE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Asset" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ASSEST_ID"/>
+                </Key>
+                <Property Name="ASSEST_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ASSET_NAME" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="SERIAL_NUMBER" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="SHORT_DESCRIPTION" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSET_TYPE" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSET_STATUS" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSET_LOCATION" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ASSET_SUBLOCATION" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MODEL_NUMBER" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MANUFACTURER" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="YEAR_OF_MANUFACTURE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="PRODUCT_COLOR" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="MEMORY" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="STORAGE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="PROCESSOR" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="RESOLUTION" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSET_IMAGE" Type="Edm.Binary" Nullable="false" sap:unicode="false"/>
+                <NavigationProperty Name="toAssignedAsset" Relationship="ZAM24_ODATA_SERVICE_SRV.Asset_to_AssignedAsset" FromRole="FromRole_Asset_to_AssignedAsset" ToRole="ToRole_Asset_to_AssignedAsset"/>
+            </EntityType>
+            <EntityType Name="AssignedAsset" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ASSIGNED_ID"/>
+                </Key>
+                <Property Name="ASSIGNED_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EMPLOYEE_ID" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="EMPLOYEE_NAME" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="STATUS" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSIGNED_DATE" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="END_DATE" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="ASSEST_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID"/>
+            </EntityType>
+            <EntityType Name="AssignedAssetAll" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ASSIGNED_ID"/>
+                </Key>
+                <Property Name="ASSIGNED_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ASSEST_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ASSET_NAME" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="SERIAL_NUMBER" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="SHORT_DESCRIPTION" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="ASSET_TYPE" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSET_STATUS" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="ASSET_LOCATION" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="ASSET_SUBLOCATION" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="MODEL_NUMBER" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="MANUFACTURER" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="YEAR_OF_MANUFACTURE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="PRODUCT_COLOR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="MEMORY" Type="Edm.String" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="STORAGE" Type="Edm.String" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="PROCESSOR" Type="Edm.String" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="ASSET_IMAGE" Type="Edm.Binary" sap:unicode="false"/>
+                <Property Name="RESOLUTION" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="EMPLOYEE_ID" Type="Edm.String" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="EMPLOYEE_NAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="ASSIGNED_DATE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="END_DATE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <Association Name="Asset_to_AssignedAsset" sap:content-version="1">
+                <End Type="ZAM24_ODATA_SERVICE_SRV.Asset" Multiplicity="1" Role="FromRole_Asset_to_AssignedAsset"/>
+                <End Type="ZAM24_ODATA_SERVICE_SRV.AssignedAsset" Multiplicity="*" Role="ToRole_Asset_to_AssignedAsset"/>
+            </Association>
+            <EntityContainer Name="ZAM24_ODATA_SERVICE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AssetSet" EntityType="ZAM24_ODATA_SERVICE_SRV.Asset" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AssignedAssetSet" EntityType="ZAM24_ODATA_SERVICE_SRV.AssignedAsset" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AssignedAssetAllSet" EntityType="ZAM24_ODATA_SERVICE_SRV.AssignedAssetAll" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="Asset_to_AssignedAsset_AssocSet" Association="ZAM24_ODATA_SERVICE_SRV.Asset_to_AssignedAsset" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="AssetSet" Role="FromRole_Asset_to_AssignedAsset"/>
+                    <End EntitySet="AssignedAssetSet" Role="ToRole_Asset_to_AssignedAsset"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://s4h:4000/sap/opu/odata/sap/ZAM24_ODATA_SERVICE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://s4h:4000/sap/opu/odata/sap/ZAM24_ODATA_SERVICE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

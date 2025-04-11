@@ -1,0 +1,137 @@
+<mvc:View
+    controllerName="stx.zam24.controller.AssignedAsset"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="idPage2"
+        title="Assigned Assets"
+        class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+        showNavButton="{= ${Authenticate>/admin} === true }"
+        navButtonPress="gotoAvailAssetPage"
+       
+    >
+        <smartFilterBar:SmartFilterBar
+            id="smartFilterBar1"
+            entitySet="AssignedAssetAllSet"
+            persistencyKey="SmartFilter_Explored"    
+            visible="{= ${Authenticate>/admin} === true }"
+        >
+            <smartFilterBar:controlConfiguration>
+                <smartFilterBar:ControlConfiguration
+                    id="idAA_EMPLOYEE_ID"
+                    label="EMPLOYEE ID"
+                    key="EMPLOYEE_ID"
+                    visibleInAdvancedArea="true"
+                
+                />
+                <smartFilterBar:ControlConfiguration
+                    id="idAA_EMPLOYEE_NAME"
+                    label="EMPLOYEE NAME"
+                    key="EMPLOYEE_NAME"
+                    visibleInAdvancedArea="true"
+                    
+                />
+                <smartFilterBar:ControlConfiguration
+                    id="idAA_ASSEST_ID"
+                    label="ASSEST ID"
+                    key="ASSEST_ID"
+                    visibleInAdvancedArea="true"
+                    
+                />
+                <smartFilterBar:ControlConfiguration
+                    id="idAA_ASSET_TYPE"
+                    label="ASSET TYPE"
+                    key="ASSET_TYPE"
+                    visibleInAdvancedArea="true"
+                   
+                />
+            </smartFilterBar:controlConfiguration>
+        </smartFilterBar:SmartFilterBar>
+
+        <smartTable:SmartTable
+            id="LineItemsSmartTable1"
+            smartFilterId="smartFilterBar1"
+            entitySet="AssignedAssetAllSet"
+            tableType="ResponsiveTable"
+            header="Assigned assets"
+            showRowCount="true"
+            persistencyKey="SmartTableAnalytical_Explored"
+            enableAutoBinding="true"
+            class="sapUiResponsiveContentPadding"
+            beforeRebindTable=".onBeforeRebind"
+            height="60%"
+            visible="true"
+            initiallyVisibleFields="EMPLOYEE_ID,EMPLOYEE_NAME,SERIAL_NUMBER,ASSET_NAME,ASSET_TYPE,STATUS"
+            requestAtLeastFields="ASSIGNED_ID,ASSEST_ID,END_DATE,ASSIGNED_DATE"
+            showVariantManagement="false"
+        >
+            <smartTable:layoutData>
+                <FlexItemData
+                    growFactor="1"
+                    baseSize="0%"
+                />
+            </smartTable:layoutData>
+            <Toolbar>
+                <Button
+                    id="idTransfer"
+                    type="Default"
+                    text="Transfer Asset"
+                    press="onTransfer"
+                    icon="sap-icon://shipping-status"
+                    enabled="false"
+                    visible="{= ${Authenticate>/admin} === true }"
+                />
+
+                <Button
+                    id="idRevert"
+                    type="Reject"
+                    text="Revoke Allocation"
+                    press="onRevert"
+                    icon="sap-icon://undo"
+                    enabled="false"
+                    visible="{= ${Authenticate>/admin} === true }"
+                />
+                <Button
+                    id="idImage"
+                    type="Accept"
+                    text="Add/View Asset Image"
+                    press="onImageView"
+                    icon="sap-icon://background"
+                    enabled="false"
+                />
+            </Toolbar>
+            <Table
+                id="idSimpTable2"
+                mode="SingleSelectMaster"
+                selectionChange="onSelectChange"
+            >
+                <columns>
+                    <Column>
+                        <Title text="Assigned Date" />
+
+                        <customData>
+                            <core:CustomData
+                                key="p13nData"
+                                value='\{"columnKey": "ASSIGNED_DATE","leadingProperty":"ASSIGNED_DATE","columnIndex":"999"}'
+                            />
+                        </customData>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text
+                                text="{path:'ASSIGNED_DATE',formatter:'.formatter.getFormatedDate'}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </smartTable:SmartTable>
+    </Page>
+</mvc:View>

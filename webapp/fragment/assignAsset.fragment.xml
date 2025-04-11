@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:T="sap.m.Toolbar"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idDialog"
+        class="sapUiResponsiveMargin"
+    >
+        <f:SimpleForm id="idFormAsssign">
+            <Label
+                text="Employee Id"
+                labelFor="EmpID"
+            />
+            <Input
+                value="{localModel>/AssignAsset/EMPLOYEE_ID}"
+                id="EmpID"
+                showValueHelp="true"
+                valueHelpRequest="vhEmpSelect"
+                submit="onSubmit"
+            />
+
+            <Label
+                text="Employee Name"
+                labelFor="EmpName"
+            />
+            <Input
+                value="{localModel>/AssignAsset/EMPLOYEE_NAME}"
+                id="EmpName"
+                enabled="false"
+            />
+
+            <Label text="Serial Number" />
+            <Input
+                id="sNum"
+                enabled="false"
+            />
+            <Label text="Assigned Date" />
+            <DatePicker
+                id="idDatePick"
+                value="{localModel>/AssignAsset/ASSIGNED_DATE}"
+                valueFormat="yyyy-MM-dd"
+                displayFormat="yyyy-MM-dd"
+                enabled="true"
+            />
+        </f:SimpleForm>
+
+        <buttons>
+            <Button
+                type="Accept"
+                text="Assign"
+                press="onAssign"
+            />
+            <Button
+                type="Reject"
+                text="Cancel"
+                press="onCancel"
+            />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

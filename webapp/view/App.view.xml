@@ -1,0 +1,5 @@
+<mvc:View controllerName="stx.zam24.controller.App"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="appContainer"></App>
+</mvc:View>

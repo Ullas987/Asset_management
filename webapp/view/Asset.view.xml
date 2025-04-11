@@ -1,0 +1,116 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    controllerName="stx.zam24.controller.Asset"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:toolBar="sap.m.Toolbar"
+    xmlns:filters="sap.ui.comp.smartfilterbar.ControlConfiguration"
+>
+    <Page
+        title="Asset Management"
+        class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+        showNavButton="false"
+        visible="{= ${Authenticate>/admin} === true }"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                press="gotoAvailableAssetPage"
+                tooltip="Available Assets"
+                text="Available Assets"
+            />
+        </headerContent>
+        <smartfilterbar:SmartFilterBar
+            id="idSmartFilterBar"
+            entitySet="AssetSet"
+        >
+            <smartfilterbar:controlConfiguration>
+                <smartfilterbar:ControlConfiguration
+                    id="idFilterAssetName"
+                    visibleInAdvancedArea="true"
+                    label="Asset Name"
+                    key="ASSET_NAME"
+                />
+                <smartfilterbar:ControlConfiguration
+                    id="idFilterAssetType"
+                    visibleInAdvancedArea="true"
+                    label="Asset Type"
+                    key="ASSET_TYPE"
+                />
+                <smartfilterbar:ControlConfiguration
+                    id="idFilterSerialNumber"
+                    visibleInAdvancedArea="true"
+                    label="Serial Number"
+                    key="SERIAL_NUMBER"
+                />
+                <smartfilterbar:ControlConfiguration
+                    id="idFilterLoc"
+                    visibleInAdvancedArea="true"
+                    label="Location of Asset"
+                    key="ASSET_LOCATION"
+                />
+            </smartfilterbar:controlConfiguration>
+        </smartfilterbar:SmartFilterBar>
+        <smartTable:SmartTable
+            id="idAssetSmartTable"
+            entitySet="AssetSet"
+            smartFilterId="idSmartFilterBar"
+            header="Assets"
+            showRowCount="true"
+            enableAutoBinding="true"
+            class="sapUiResponsiveContentPadding"
+            useTablePersonalisation="true"
+            requestAtLeastFields="ASSEST_ID"
+            initiallyVisibleFields="SERIAL_NUMBER,ASSET_NAME,ASSET_TYPE,MANUFACTURER,YEAR_OF_MANUFACTURE,ASSET_LOCATION,ASSET_STATUS"
+        >
+            <Table
+                selectionChange="onSelectionChange"
+                mode="SingleSelectMaster"
+            />
+            <smartTable:customToolbar>
+                <Toolbar active="true">
+                    <Button
+                        text="Create"
+                        type="Accept"
+                        icon="sap-icon://create"
+                        press="onCreate"
+                    />
+                    <Button
+                        id="idUpdateBtn"
+                        text="Update"
+                        icon="sap-icon://edit"
+                        press="onUpdate"
+                        enabled="false"
+                    />
+                    <Button
+                        id="idStatusTooglebtn"
+                        text="Status"
+                        type="Reject"
+                        icon="sap-icon://action-settings"
+                        press="onInactive"
+                        enabled="false"
+                    />
+                    <Button
+                        id="idDeleteBtn"
+                        text="Delete"
+                        type="Emphasized"
+                        icon="sap-icon://delete"
+                        press="onDelete"
+                        enabled="false"
+                    />
+
+                    <Button
+                        id="idHistory"
+                        text="History"
+                        type="Default"
+                        icon="sap-icon://work-history"
+                        press="onHistory"
+                        enabled="false"
+                    />
+                </Toolbar>
+            </smartTable:customToolbar>
+        </smartTable:SmartTable>
+    </Page>
+</mvc:View>

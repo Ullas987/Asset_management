@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns:valuehelpdialog="sap.ui.comp.valuehelpdialog"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <valuehelpdialog:ValueHelpDialog
+        id="idvh"
+        cancel="vhCancel"
+    >
+       <Table id="idSimpleTable1"></Table>
+    </valuehelpdialog:ValueHelpDialog>
+</core:FragmentDefinition>
