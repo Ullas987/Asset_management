@@ -1,0 +1,82 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+>
+    <Dialog
+        id="idHistoryPopup"
+        title="Assigned History"
+        resizable="true"
+    >
+        <List>
+            <items>
+                <StandardListItem
+                    title="Asset Type: {localHistory>/AssetDetails/AssetsType}"
+                />
+                <StandardListItem
+                    title="Asset Name: {localHistory>/AssetDetails/AssetsName}"
+                />
+            </items>
+        </List>
+        <Table
+            id="idHistoryTable"
+            items="{localHistory>/results}"
+        >
+            <columns>
+                <Column>
+                    <header>
+                        <Label text="Employee ID" />
+                    </header>
+                </Column>
+                <Column>
+                    <header>
+                        <Label text="Employee Name" />
+                    </header>
+                </Column>
+                <Column>
+                    <header>
+                        <Label text="Assigned Date" />
+                    </header>
+                </Column>
+                <Column>
+                    <header>
+                        <Label text="End Date" />
+                    </header>
+                </Column>
+                <Column>
+                    <header>
+                        <Label text="Status" />
+                    </header>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{localHistory>EMPLOYEE_ID}" />
+                        <Text text="{localHistory>EMPLOYEE_NAME}" />
+                        <Text
+                            text="{path: 'localHistory>ASSIGNED_DATE', formatter: '.formatter.getFormatedDate'}"
+                        />
+
+                        <Text
+                            text="{path: 'localHistory>END_DATE', formatter: '.formatter.getFormatedDate'}"
+                        />
+                        <ObjectStatus
+                            text="{localHistory>STATUS}"
+                            state="{
+                        path:'localHistory>STATUS',
+                        formatter: '.formatter.getStatus'
+                    }"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <endButton>
+            <Button
+                text="Close"
+                press="onCloseHistory"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

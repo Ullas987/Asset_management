@@ -1,0 +1,7 @@
+<mvc:View controllerName="stx.zam24.controller.Image"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page title="Test Page">
+    <Button id="btnImage" press="onImageBtn" text="Image"></Button>
+    </Page>
+</mvc:View>

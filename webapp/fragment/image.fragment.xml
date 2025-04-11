@@ -1,0 +1,68 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:file="sap.ui.unified"
+    controller="stx.zam24.controller.AssignedAsset"
+>
+    <Dialog
+        id="ImagePopup"
+        title="Asset Image"
+        resizable="true"
+    >
+        <VBox class="sapUiSmallMargin">
+            <Label
+                text="Select Image"
+                labelFor="fileUploader"
+            />
+            <file:FileUploader
+                id="fileUploader"
+                fileType="jpg,png,jpeg"
+                change="onFileUpload"
+                uploadOnChange="true"
+                width="100%"
+            />
+            <Image
+                id="previewImage"
+                width="100%"
+                height="200px"
+                visible="true"
+                src="https://pixsector.com/cache/517d8be6/av5c8336583e291842624.png"
+            />
+
+            <FlexBox justifyContent="End">
+                  <Button
+                    id="btnDelete"
+                    text="Delete"
+                    press="onDeletePress"
+                    visible="false"
+                />
+                <Button
+                    id="btnUpload"
+                    text="Upload"
+                    press="onUploadPress"
+                    visible="false"
+                />
+            </FlexBox>
+        </VBox>
+        <List
+            headerText="List of Images"
+            id="idImage_name"
+            items="{
+			path: 'localImageModel>/results'}"
+        >
+            <StandardListItem
+                title="{localImageModel>IMAGE_NAME}"
+                press="handlePress"
+                type="Active"
+            />
+        </List>
+
+        <endButton>
+            <Button
+                text="Cancel"
+                press="onCancel"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

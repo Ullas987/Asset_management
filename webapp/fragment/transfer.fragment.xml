@@ -1,0 +1,68 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idTransferDialog"
+        title="Transfer the Item"
+        draggable="true"
+        resizable="true"
+        contentWidth="500px"
+    >
+        <f:SimpleForm id="idFormAsssign4">
+            <HBox
+                class="sapUiSmallMargin"
+                alignItems="Center"
+            >
+                <items>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label
+                            text="Employee Id"
+                            labelFor="empID"
+                        />
+                        <Input
+                            id="empID"
+                            value="{localModel2>/EMPLOYEE_ID}"
+                            showValueHelp="true"
+                            valueHelpRequest="onOpenValueHelp"
+                            width="200px"
+                        />
+                    </VBox>
+                    <HBox>
+                        <VBox>
+                            <Label
+                                text=""
+                                labelFor="empName"
+                                visible="true"
+                                class="sapUiResponsiveContentPadding"
+                            />
+                            <Text
+                                id="empName"
+                                text="{localModel2>/EMPLOYEE_NAME}"
+                                width="200px"
+                                class="sapUiResponsiveContentPadding"
+                            />
+                        </VBox>
+                    </HBox>
+                </items>
+            </HBox>
+        </f:SimpleForm>
+        <beginButton>
+            <Button
+                id="idTransferBtn"
+                text="Transfer"
+                press="onTransferPress"
+                type="Default"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                id="idCancelBtn3"
+                text="Cancel"
+                press="onTransferCancel"
+                type="Reject"
+            />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

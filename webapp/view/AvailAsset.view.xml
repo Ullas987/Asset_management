@@ -1,0 +1,94 @@
+<mvc:View
+    controllerName="stx.zam24.controller.AvailAsset"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="idPage1"
+        title="Available Assets"
+        class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+        showNavButton="true"
+        navButtonPress="gotoAssetPage"
+        visible="{= ${Authenticate>/admin} === true }"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                press="gotoAssignedAssetPage"
+                tooltip="Assigned Assets"
+                text="Assigned Assets"
+            />
+        </headerContent>
+
+        <smartFilterBar:SmartFilterBar
+            id="smartFilterBar"
+            entitySet="AvailAssetSet"
+        >
+            <smartFilterBar:controlConfiguration>
+                <smartFilterBar:ControlConfiguration
+                    id="idAvailAssetName"
+                    visibleInAdvancedArea="true"
+                    label="Asset Name"
+                    key="ASSET_NAME"
+                />
+                <smartFilterBar:ControlConfiguration
+                    id="idAvailAssetType"
+                    visibleInAdvancedArea="true"
+                    label="Asset Type"
+                    key="ASSET_TYPE"
+                />
+                <smartFilterBar:ControlConfiguration
+                    id="idAvailSerialNumber"
+                    visibleInAdvancedArea="true"
+                    label="Serial Number"
+                    key="SERIAL_NUMBER"
+                />
+            </smartFilterBar:controlConfiguration>
+        </smartFilterBar:SmartFilterBar>
+
+        <smartTable:SmartTable
+            id="LineItemsSmartTable"
+            smartFilterId="smartFilterBar"
+            entitySet="AvailAssetSet"
+            tableType="ResponsiveTable"
+            header="Available assets"
+            showRowCount="true"
+            persistencyKey="SmartTableAnalytical_Explored"
+            enableAutoBinding="true"
+            class="sapUiResponsiveContentPadding"
+            height="60%"
+            visible="true"
+            initiallyVisibleFields="ASSET_NAME,SERIAL_NUMBER,SHORT_DESCRIPTION,ASSET_TYPE,ASSET_STATUS,ASSET_LOCATION,ASSET_SUBLOCATION,MODEL,MANUFACTURER,YEAR_OF_MANUFACTURE,PRODUCT_COLOR,MEMORY,STORAGE,PROCESSOR,RESOLUTION"
+            requestAtLeastFields="ASSEST_ID"
+            showVariantManagement="false"
+        >
+            <smartTable:layoutData>
+                <FlexItemData
+                    growFactor="1"
+                    baseSize="0%"
+                />
+            </smartTable:layoutData>
+            <Toolbar>
+                <Button
+                    id="idAccept"
+                    type="Accept"
+                    text="Assign Asset"
+                    press="onCreate"
+                    icon="sap-icon://create"
+                    enabled="false"
+                    tooltip="Select a Record"
+                />
+            </Toolbar>
+            <Table
+                id="idSimpTable"
+                mode="SingleSelectMaster"
+                selectionChange="setDataToDialog"
+            />
+        </smartTable:SmartTable>
+    </Page>
+</mvc:View>
